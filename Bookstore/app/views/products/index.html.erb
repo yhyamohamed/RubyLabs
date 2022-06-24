@@ -3,7 +3,9 @@
 
   <div class="mb-2">
     <h5 class="d-inline">  products: </h5>
-    <dutton class=" col-2 offset-6 btn btn-sm btn-success me-2 "> Add a-product</dutton>
+    <a class=" col-2 offset-6 btn btn-sm btn-success me-2 "
+      <%= link_to "Add a-product" , new_product_path %>
+    </a>
   </div>
   <% @products.each do |p| %>
       <div class="card border-info mb-3 col-3 m-1 ">
