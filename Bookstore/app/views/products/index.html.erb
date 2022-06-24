@@ -1,1 +1,34 @@
-<h1>lol</h1>
+
+<div class="pg-light row offset-1 mt-4">
+
+  <div class="mb-2">
+    <h5 class="d-inline">  products: </h5>
+    <dutton class=" col-2 offset-6 btn btn-sm btn-success me-2 "> Add a-product</dutton>
+  </div>
+  <% @products.each do |p| %>
+      <div class="card border-info mb-3 col-3 m-1 ">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body p-0 mt-2 ms-1">
+              <h5 class="card-title"><%= p.name %></h5>
+              <p class="card-text"> <%=( p.description ).truncate_words(3)%></p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="col-12 offset-1 mt-1 mb-2">
+          <a class="btn btn-sm btn-primary"
+          <%= link_to "Details" , p %>
+          </a>
+          <button class="btn btn-sm btn-warning"> Edit</button>
+          <button class="btn btn-sm btn-danger me-2 "> Delete</button>
+        </div>
+      </div>
+    <% end %>
+
+</div>
