@@ -13,7 +13,6 @@ Product.destroy_all
     name: Faker::Food.dish,
     description: Faker::Lorem.sentence(word_count: 10, supplemental: false, random_words_to_add: 0).chop,
     price: 60.03,
-    image: "#{i + 1}.jpg"
   )
 end
 
