@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :authenticate_user! , only: [:new,:edit,:destroy]
   def index
     @products = Product.all
   end
@@ -42,6 +42,16 @@ class ProductsController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
+
+  protected
+  def authenticate_user!
+    unless Current.user
+      redirect_to sign_in_path, :notice => 'pls log in first'
+
+    end
+  end
+
+
   private
   def product_params
     params.require(:product).permit(:name, :description,:price,:image)
