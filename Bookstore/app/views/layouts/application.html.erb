@@ -32,13 +32,13 @@
       <ul class="navbar-nav ms-auto mb-lg-0">
         <% if Current.user %>
 
-          <li class="nav-item">
+          <li class="nav-item me-1 mt-2">
             <span class="navbar-text">
             <%= Current.user.email %>
           </span>
           </li>
           <li class="nav-item">
-            <%= button_to "logout", logout_path, method: :delete, :class => "btn btn-outline-secondary" %>
+            <%= button_to "logout", logout_path, method: :delete, :class => "btn btn-outline-light text-danger" %>
           </li>
         <% else %>
           <li class="nav-item">

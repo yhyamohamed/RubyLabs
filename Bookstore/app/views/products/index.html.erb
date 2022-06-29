@@ -18,9 +18,8 @@
             <div class="card-body p-0 mt-2 ms-1">
               <h5 class="card-title"><%= p.name %></h5>
               <p class="card-text"> <%=( p.description ).truncate_words(3)%></p>
-              <p class="card-text"><small class="text-muted">Last updated <%= distance_of_time_in_words( Time.now,p.updated_at, include_seconds: true) %> mins ago</small></p>
-
-
+              <p class="card-text"><small class="text-muted">Last updated <%= distance_of_time_in_words( Time.now,p.updated_at, include_seconds: true) %> mins ago</small>
+               <br/> <small class="fs-6"> written By :</small> <small class="text-muted fst-italic"><%= p.user.name %></small></p>
             </div>
           </div>
         </div>

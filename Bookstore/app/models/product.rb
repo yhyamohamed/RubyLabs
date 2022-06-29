@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   validates :name,presence: true, length: { minimum: 5 }
   validates :description,presence: true
   validates :price,presence: true
-
+  belongs_to :user
   after_commit :add_default_image, on: [:create, :update]
 
   def add_default_image
