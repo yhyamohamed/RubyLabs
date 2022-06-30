@@ -30,25 +30,23 @@
 
       </ul>
       <ul class="navbar-nav ms-auto mb-lg-0">
-        <% if Current.user %>
-
-          <li class="nav-item me-1 mt-2">
-            <span class="navbar-text">
-            <%= Current.user.email %>
+        <% if user_signed_in?%>
+          <span class="navbar-text">
+           <%= current_user.email %>
           </span>
           </li>
           <li class="nav-item">
-            <%= button_to "logout", logout_path, method: :delete, :class => "btn btn-outline-light text-danger" %>
+            <%= button_to "logout", destroy_user_session_path, method: :delete, :class => "btn btn-outline-light text-danger" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= button_to "sign in", sign_in_path, :class => "btn nav-link" %>
+            <%= button_to "sign in", new_user_session_path, :class => "btn nav-link" %>
           </li>
           <li class="nav-item">
-            <%= button_to "sign up", sign_up_path, :class => "btn nav-link" %>
+            <%= button_to "sign up", new_user_registration_path, :class => "btn nav-link" %>
           </li>
         <% end %>
-        </li>
+
       </ul>
 
     </div>
@@ -56,7 +54,8 @@
 
 </nav>
 
-<div class="container">
+
+<div class="container mt-2">
   <%= render partial: "partials/flashes" %>
   <%= yield %>
 </div>
