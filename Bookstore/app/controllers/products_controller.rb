@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user! , only: [:new,:edit,:destroy]
+
   def index
     @products = Product.all
   end
@@ -15,7 +16,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user_id = current_user.id
     if @product.save
+      UserMailer..with(id:current_user.id).post_created.de
       redirect_to @product , notice: "product added"
     else
       render :new, status: :unprocessable_entity
@@ -23,7 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
+      @product = Product.find(params[:id])
   end
 
   def update
@@ -43,13 +46,13 @@ class ProductsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  protected
-  def authenticate_user!
-    unless Current.user
-      redirect_to sign_in_path, :notice => 'pls log in first'
-
-    end
-  end
+  # protected
+  # def authenticate_user!
+  #   unless Current.user
+  #     redirect_to sign_in_path, :notice => 'pls log in first'
+  #
+  #   end
+  # end
 
 
   private

@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     end
 
   end
+
+  rescue_from CanCan::AccessDenied do
+    flash[:error] = "u r not authorize  "
+  end
 end
